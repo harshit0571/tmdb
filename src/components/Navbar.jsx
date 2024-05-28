@@ -1,30 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Navbar = () => {
+  const [menuBar, setMenuBar] = useState(false);
   return (
     <div className="w-full bg-darkBlue text-white flex justify-center">
-      <div className="w-full lg:w-[70%] flex md:justify-between p-5 md:items-baseline md:flex-row flex-col items-center md:gap-0 gap-5">
-        <div className="flex items-center gap-5">
+      <div className="w-full lg:w-[70%] flex md:justify-between p-5 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
+        <div className="flex items-center gap-5 md:flex-row flex-wrap justify-center">
+          {menuBar ? (
+            <i
+              class="fa fa-times md:hidden"
+              aria-hidden="true"
+              onClick={() => {
+                setMenuBar(!menuBar);
+                console.log(menuBar);
+              }}
+            ></i>
+          ) : (
+            <i
+              class="fa fa-bars md:hidden"
+              aria-hidden="true"
+              onClick={() => {
+                setMenuBar(!menuBar);
+              }}
+            ></i>
+          )}
           <div className="flex items-center">
             <p className="text-3xl tracking-wide font-bold text-transparent bg-clip-text bg-gradient">
               TMDB{" "}
             </p>
             <span className="ml-4 inline-block w-[50px] h-5 bg-gradient-to-r from-cyan-500 to-cyan-300 rounded-lg"></span>
           </div>
-          <div className="hidden gap-3 md:flex">
-            <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-              Movies
-            </p>
-            <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-              TV Shows
-            </p>
-            <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-              People
-            </p>
-            <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-              More
-            </p>
-          </div>
+
+          {menuBar && (
+            <div className="gap-3 md:flex md:flex-row w-full md:w-max flex-col justify-center text-center">
+              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
+                Movies
+              </p>
+              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
+                TV Shows
+              </p>
+              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
+                People
+              </p>
+              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
+                More
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="flex gap-7 items-baseline text-xl">
