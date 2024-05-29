@@ -19,11 +19,9 @@ export default {
           ")",
         blueGradient:
           "linear-gradient(170deg, " +
-          theme("colors.blueGradient") +
+          "#4859AB" +
           ", " +
-          "#046ebd" +
-          ", " +
-         "#67ffe8" +
+         "#80B1CD" +
           ")",
       }),
     },

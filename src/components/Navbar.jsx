@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 const Navbar = () => {
   const [menuBar, setMenuBar] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
+  
   return (
     <div className="w-full bg-darkBlue text-white flex flex-col items-center justify-center">
       <div className="w-[100%] lg:w-[85%] xl:w-[70%] flex md:justify-between p-3 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
@@ -67,18 +68,26 @@ const Navbar = () => {
           <div className="bg-gray-400 h-[30px] w-[30px] min-h-[25px] min-w-[25px] text-xl rounded-full transition-all hover:bg-gradient text-center pt-[0.9] text-white cursor-pointer">
             H
           </div>
-          <i
-            class="fa fa-search text-blue-400 text-2xl hover:text-teal-400 cursor-pointer"
-            aria-hidden="true"
-            onClick={() => {
-              setSearchBar(!searchBar);
-            }}
-          ></i>
+          {searchBar ? (
+            <i
+              class="fa fa-times text-2xl text-blue-400 hover:text-teal-400 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => {
+                setSearchBar(!searchBar);
+              }}
+            ></i>
+          ) : (
+            <i
+              class="fa fa-search text-blue-400 text-2xl hover:text-teal-400 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => {
+                setSearchBar(!searchBar);
+              }}
+            ></i>
+          )}
         </div>
       </div>
-      <div className="relative w-full">
-        <SearchBar />
-      </div>
+      <div className="relative w-full">{searchBar && <SearchBar />}</div>
     </div>
   );
 };
