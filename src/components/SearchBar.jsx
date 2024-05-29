@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const SearchBar = () => {
   const [showTrending, setShowTrending] = useState(true);
   const [showSearches, setShowSearches] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const [searchesArray, setSearchesArray] = useState([]);
+  const searchBarRef = useRef(null);
 
   const getTrending = async () => {
     const res = await axios.get(
@@ -33,12 +34,29 @@ const SearchBar = () => {
   };
   console.log(searchesArray);
 
+  const handleClickOutside = (event) => {
+    if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+      setShowSearches(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   useEffect(() => {
     getTrending();
   }, []);
 
   return (
-    <div className="w-full flex-col absolute top-0 items-center bg-white border-b-2 border-y-slate-200 text-slate-500 flex justify-center">
+    <div
+      ref={searchBarRef}
+      className="w-full flex-col  absolute top-0 items-center bg-white border-b-2 border-y-slate-200 text-slate-500 flex justify-center"
+    >
       <div className="w-[100%] lg:w-[85%] xl:w-[70%] italic py-3 px-10 gap-5">
         <i
           className="fa fa-search text-black hover:text-teal-400 cursor-pointer"
@@ -51,15 +69,15 @@ const SearchBar = () => {
           value={searchValue}
           onChange={(e) => {
             handleInputChange(e);
+            setShowSearches(true);
           }}
         />
         <i
           className="fa fa-times cursor-pointer"
           aria-hidden="true"
           onClick={() => {
-            setShowTrending(!showTrending);
+            setShowTrending(true);
             setSearchValue("");
-            setSearchesArray([]);
           }}
         ></i>
       </div>
@@ -76,22 +94,26 @@ const SearchBar = () => {
           )}
 
           <div className="m-auto p-1 flex flex-col justify-center items-center overflow-auto max-h-[300px] pt-10">
-            {searchesArray.length<1 ? <>no search results</>: searchesArray.map((search) => {
-              return (
-                <div
-                  className="w-full border-b-2 border-slate-100 bg-white py-1 sm:px-10 z-50"
-                  key={search.id}
-                >
-                  <p className="w-[95%] lg:w-[85%] max-h-[30px] whitespace-nowrap overflow-x-auto xl:w-[65%] m-auto text-black italic">
-                    <i
-                      className="fa fa-search text-black hover:text-teal-400 cursor-pointer mr-2"
-                      aria-hidden="true"
-                    ></i>{" "}
-                    {search.name ? search.name : search.title}
-                  </p>
-                </div>
-              );
-            })}
+            {searchesArray.length < 1 ? (
+              <>no search results</>
+            ) : (
+              searchesArray.map((search) => {
+                return (
+                  <div
+                    className="w-full border-b-2 border-slate-100 bg-white py-1 sm:px-10 z-50"
+                    key={search.id}
+                  >
+                    <p className="w-[95%] lg:w-[85%] max-h-[30px] whitespace-nowrap overflow-x-auto xl:w-[65%] m-auto text-black italic">
+                      <i
+                        className="fa fa-search text-black hover:text-teal-400 cursor-pointer mr-2"
+                        aria-hidden="true"
+                      ></i>{" "}
+                      {search.name ? search.name : search.title}
+                    </p>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       )}
