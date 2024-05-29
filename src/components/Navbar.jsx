@@ -4,7 +4,7 @@ const Navbar = () => {
   const [menuBar, setMenuBar] = useState(false);
   return (
     <div className="w-full bg-darkBlue text-white flex justify-center">
-      <div className="w-full lg:w-[70%] flex md:justify-between p-5 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
+      <div className="w-full lg:w-[70%] flex md:justify-between p-3 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
         <div className="flex items-center gap-5 md:flex-row flex-wrap justify-center">
           {menuBar ? (
             <i

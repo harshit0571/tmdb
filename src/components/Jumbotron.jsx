@@ -3,9 +3,9 @@ import oscar from "../assets/oscar.svg";
 
 export const Jumbotron = () => {
   return (
-    <div className="w-[100%] md:w-[75%] bg-red-200">
-      <div className="flex flex-col p-5 justify-center items-center w-full py-10 gap-10">
-        <div className="flex flex-col p-5 justify-center md:items-start w-[100%] md:w-[95%] items-center gap-2 md:gap-0 text-center md:text-left">
+    <div className="w-[100%] md:w-[75%]">
+      <div className="flex flex-col p-5 justify-center items-center w-full py-10 gap-10 bg-[url('https://wallpapercave.com/wp/wp46542.jpg')] bg-no-repeat bg-cover bg-gray-400">
+        <div className="flex flex-col p-5 justify-center md:items-start w-[100%] md:w-[95%] items-center gap-2 md:gap-0 text-center md:text-left mt-10 ">
           <h1 className="text-4xl md:text-5xl text-white font-bold ">
             Welcome.
           </h1>
