@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [menuBar, setMenuBar] = useState(false);
+  const [searchBar, setSearchBar] = useState(false);
   return (
-    <div className="w-full bg-darkBlue text-white flex justify-center">
-      <div className="w-full lg:w-[70%] flex md:justify-between p-3 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
+    <div className="w-full bg-darkBlue text-white flex flex-col items-center justify-center">
+      <div className="w-[100%] lg:w-[85%] xl:w-[70%] flex md:justify-between p-3 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
         <div className="flex items-center gap-5 md:flex-row flex-wrap justify-center">
           {menuBar ? (
             <i
@@ -68,8 +70,14 @@ const Navbar = () => {
           <i
             class="fa fa-search text-blue-400 text-2xl hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
+            onClick={() => {
+              setSearchBar(!searchBar);
+            }}
           ></i>
         </div>
+      </div>
+      <div className="relative w-full">
+        <SearchBar />
       </div>
     </div>
   );
