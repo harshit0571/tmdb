@@ -7,13 +7,23 @@ export default {
         "custom-gradient-from": "#8FCEA1", // Green 400
         "custom-gradient-to": "#6CB8D6", // Cyan 300
         darkBlue: "#082541",
+        blueGradient: "#6a5acd",
+        blueGradientEnd: "#25CCF7",
       },
       backgroundImage: (theme) => ({
-        "gradient":
+        gradient:
           "linear-gradient(to right, " +
           theme("colors.custom-gradient-from") +
           ", " +
           theme("colors.custom-gradient-to") +
+          ")",
+        blueGradient:
+          "linear-gradient(170deg, " +
+          theme("colors.blueGradient") +
+          ", " +
+          "#046ebd" +
+          ", " +
+         "#67ffe8" +
           ")",
       }),
     },
