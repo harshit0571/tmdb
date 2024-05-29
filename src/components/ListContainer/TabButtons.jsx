@@ -1,9 +1,6 @@
 import React from "react";
-import { useState } from "react";
 
-const TabButtons = ({data}) => {
-  const [active, setActive] = useState(0);
-
+const TabButtons = ({ data, active, setActive }) => {
   return (
     <div className=" border-2 w-max rounded-3xl border-black">
       {data.map((tab, index) => (
