@@ -15,6 +15,7 @@ const SearchBar = () => {
       }`
     );
     setSearchesArray(res.data.results);
+    
   };
   const handleInputChange = async (event) => {
     const { value } = event.target;
@@ -93,7 +94,7 @@ const SearchBar = () => {
             </div>
           )}
 
-          <div className="m-auto p-1 flex flex-col justify-center items-center overflow-auto max-h-[300px] pt-10">
+          <div className="m-auto p-1 flex flex-col justify-center items-center overflow-auto">
             {searchesArray.length < 1 ? (
               <>no search results</>
             ) : (
