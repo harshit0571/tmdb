@@ -30,6 +30,7 @@ const Movie = () => {
   return (
     <div className="h-full w-full">
       <MovieDisplay movie={movie} providers={providers?.results?.US} />
+      
     </div>
   );
 };

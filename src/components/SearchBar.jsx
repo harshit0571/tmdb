@@ -57,7 +57,7 @@ const SearchBar = () => {
   return (
     <div
       ref={searchBarRef}
-      className="w-full flex-col  absolute top-0 items-center bg-white border-b-2 border-y-slate-200 text-slate-500 flex justify-center"
+      className="w-full flex-col z-50  absolute top-0 items-center bg-white border-b-2 border-y-slate-200 text-slate-500 flex justify-center"
     >
       <div className="w-[100%] lg:w-[85%] xl:w-[70%] italic py-3 px-10 gap-5">
         <i

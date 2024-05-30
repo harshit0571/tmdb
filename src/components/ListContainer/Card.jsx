@@ -9,16 +9,14 @@ const Card = ({ data, loading }) => {
           <Loader />
         </div>
       ) : (
-        <div className="flex flex-col gap-5 min-w-[170px] card-transition">
+        <div className="flex flex-col gap-5 min-w-[170px] card-transition w-full">
           <div
-            className="relative h-[225px] w-[150px] bg-no-repeat bg-cover bg-center object-cover object-center rounded-xl "
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
-            }}
+            className="relative bg-no-repeat bg-cover bg-center object-cover object-center rounded-xl w-full"
           >
             <img
               src={"https://image.tmdb.org/t/p/original/" + data.backdrop_path}
-              className=" rounded-xl h-full absolute top-0 "
+              className=" rounded-xl w-[200px]"
+              style={{ height: "calc(150px * 1.5)" }}
             />
           </div>
 
