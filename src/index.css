@@ -4,20 +4,32 @@
   margin: 0;
 }
 
-
 @media (max-width: 640px) {
   .placeholder-sm::placeholder {
-    content: 'Search...';
+    content: "Search...";
   }
 }
 
 @media (min-width: 641px) {
   .placeholder-lg::placeholder {
-    content: 'Search for a movie, tv show, person.......';
+    content: "Search for a movie, tv show, person.......";
   }
 }
 .card-transition {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.scroll-view {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.scroll-view.fade-out {
+  opacity: 0;
+}
+
+.scroll-view.fade-in {
+  opacity: 1;
 }
 @tailwind base;
 @tailwind components;
