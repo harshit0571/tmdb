@@ -7,7 +7,7 @@ const Home = () => {
   const data2 = ["", "", "", "", "", "", "", ""];
   return (
     <div className="flex flex-col justify-center items-center">
-      <Navbar />
+      {/* <Navbar /> */}
       <Jumbotron />
       <DisplaySection
         title="Trending"
