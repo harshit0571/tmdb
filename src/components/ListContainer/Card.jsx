@@ -3,10 +3,17 @@ import React from "react";
 const Card = ({ data }) => {
   return (
     <div className="flex flex-col gap-5 min-w-[170px] card-transition">
-      <img
-        src={"https://image.tmdb.org/t/p/w500/" + data.backdrop_path}
-        className="h-[225px] w-[150px] rounded-xl"
-      />
+      <div
+        className="relative h-[225px] w-[150px] bg-no-repeat bg-cover bg-center object-cover object-center rounded-xl "
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
+        }}
+      >
+        <img
+          src={"https://image.tmdb.org/t/p/original/" + data.backdrop_path}
+          className=" rounded-xl h-full absolute top-0 "
+        />
+      </div>
 
       <div>
         <p className="font-bold">

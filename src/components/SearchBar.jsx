@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import { useDebounce } from "../hooks/DebounceHook";
 
 const SearchBar = () => {
   const [showTrending, setShowTrending] = useState(true);
@@ -7,33 +8,26 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchesArray, setSearchesArray] = useState([]);
   const searchBarRef = useRef(null);
+  const debouncedSearch = useDebounce(searchValue);
 
-  const getTrending = async () => {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=${
-        import.meta.env.VITE_TMDB_KEY
-      }`
-    );
-    setSearchesArray(res.data.results);
-    
+  const getLists = async (api) => {
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/${api}&api_key=${
+          import.meta.env.VITE_TMDB_KEY
+        }`
+      );
+      const limitedResults = res.data.results.slice(0, 10);
+      setSearchesArray(limitedResults);
+    } catch (error) {
+      console.error("Error fetching the list:", error);
+    }
   };
   const handleInputChange = async (event) => {
     const { value } = event.target;
     setSearchValue(value);
     setShowTrending(value === "");
-    if (value === "") {
-      getTrending();
-    } else {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/search/keyword?query=${value}&page=1&api_key=${
-          import.meta.env.VITE_TMDB_KEY
-        }`
-      );
-      setSearchesArray(res.data.results);
-      console.log(res, "d");
-    }
   };
-  console.log(searchesArray);
 
   const handleClickOutside = (event) => {
     if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
@@ -50,8 +44,15 @@ const SearchBar = () => {
   }, []);
 
   useEffect(() => {
-    getTrending();
-  }, []);
+    const setLists = async () => {
+      if (debouncedSearch === "") {
+        getLists("trending/all/day?language=en-US");
+      } else {
+        getLists(`search/multi?query=${debouncedSearch}&page=1`);
+      }
+    };
+    setLists();
+  }, [debouncedSearch]);
 
   return (
     <div

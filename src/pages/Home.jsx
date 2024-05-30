@@ -12,8 +12,8 @@ const Home = () => {
       <DisplaySection
         title="Trending"
         tabs={[
-          { name: "today", api: "/trending/all/day?language=en-US" },
-          { name: "this week", api: "/trending/all/week?language=en-US" },
+          { name: "Today", api: "/trending/all/day?language=en-US" },
+          { name: "This Week", api: "/trending/all/week?language=en-US" },
         ]}
         data={data2}
       />
@@ -21,12 +21,20 @@ const Home = () => {
       <DisplaySection
         title="What's Popular"
         tabs={[
-          { name: "movies", api: "/movie/popular?language=en-US&page=1" },
-          { name: "on tv", api: "/tv/popular?language=en-US&page=1" },
+          { name: "Movies", api: "/movie/popular?language=en-US&page=1" },
+          { name: "On tv", api: "/tv/popular?language=en-US&page=1" },
           {
-            name: "in theatre",
+            name: "In theatre",
             api: "/movie/now_playing?language=en-US&page=1",
           },
+        ]}
+        data={data2}
+      />
+      <DisplaySection
+        title="Free to watch"
+        tabs={[
+          { name: "Movies", api: "/movie/popular?language=en-US&page=1" },
+          { name: "TV", api: "/tv/popular?language=en-US&page=1" },
         ]}
         data={data2}
       />
