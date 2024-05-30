@@ -22,7 +22,7 @@ const Movie = () => {
   }, []);
   return (
     <div className="h-full w-full">
-      <MovieDisplay />
+      <MovieDisplay movie={movie} />
     </div>
   );
 };
