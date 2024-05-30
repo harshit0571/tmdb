@@ -24,6 +24,10 @@ const Home = () => {
           { name: "Movies", api: "/movie/popular?language=en-US&page=1" },
           { name: "On tv", api: "/tv/popular?language=en-US&page=1" },
           {
+            name: "For Rent",
+            api: "/movie/now_playing?language=en-US&page=1",
+          },
+          {
             name: "In theatre",
             api: "/movie/now_playing?language=en-US&page=1",
           },
@@ -33,8 +37,8 @@ const Home = () => {
       <DisplaySection
         title="Free to watch"
         tabs={[
-          { name: "Movies", api: "/movie/popular?language=en-US&page=1" },
-          { name: "TV", api: "/tv/popular?language=en-US&page=1" },
+          { name: "Movies", api: "/movie/upcoming?language=en-US&page=1" },
+          { name: "TV", api: "/tv/airing_today?language=en-US&page=1" },
         ]}
         data={data2}
       />

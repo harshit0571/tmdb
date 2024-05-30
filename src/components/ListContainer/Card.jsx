@@ -23,13 +23,9 @@ const Card = ({ data, loading }) => {
           </div>
 
           <div>
-            <p className="font-bold">
-              {data.media_type == "tv" ? data.name : data.title}
-            </p>
+            <p className="font-bold">{data.name || data.title}</p>
             <p className="text-gray-400 text-sm">
-              {data.media_type == "tv"
-                ? data.first_air_date
-                : data.release_date}
+              {data.first_air_date || data.release_date}
             </p>
           </div>
         </div>
