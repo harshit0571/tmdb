@@ -9,6 +9,7 @@ export default {
         darkBlue: "#082541",
         blueGradient: "#6a5acd",
         blueGradientEnd: "#25CCF7",
+        darkBack:"#0B2034"
       },
       backgroundImage: (theme) => ({
         gradient:

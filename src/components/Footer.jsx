@@ -32,7 +32,7 @@ const footerData = [
 
 const Footer = () => {
   return (
-    <div className="bg-darkBlue w-full h-max p-10 gap-10 flex md:flex-row flex-col justify-center items-center">
+    <div className="bg-darkBlue w-full h-max p-10 gap-10 bottom-0 flex md:flex-row flex-col justify-center items-center">
       <div className="flex flex-col gap-6">
         <img
           src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
