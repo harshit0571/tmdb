@@ -4,10 +4,8 @@ import { Jumbotron } from "../components/Jumbotron";
 import DisplaySection from "../components/ListContainer/DisplaySection";
 
 const Home = () => {
-  const data2 = ["", "", "", "", "", "", "", ""];
   return (
     <div className="flex flex-col justify-center items-center">
-      {/* <Navbar /> */}
       <Jumbotron />
       <DisplaySection
         title="Trending"
@@ -15,7 +13,7 @@ const Home = () => {
           { name: "Today", api: "/trending/all/day?language=en-US" },
           { name: "This Week", api: "/trending/all/week?language=en-US" },
         ]}
-        data={data2}
+    
       />
 
       <DisplaySection
@@ -28,11 +26,11 @@ const Home = () => {
             api: "/movie/now_playing?language=en-US&page=1",
           },
           {
-            name: "In theatre",
+            name: "In Theatre",
             api: "/movie/now_playing?language=en-US&page=1",
           },
         ]}
-        data={data2}
+    
       />
       <DisplaySection
         title="Free to watch"
@@ -40,7 +38,7 @@ const Home = () => {
           { name: "Movies", api: "/movie/upcoming?language=en-US&page=1" },
           { name: "TV", api: "/tv/airing_today?language=en-US&page=1" },
         ]}
-        data={data2}
+     
       />
     </div>
   );
