@@ -42,6 +42,20 @@ const MovieInfo = ({ title, date, genres, runtime, percentage }) => {
           What's your <span className="border-b-2 border-blue-800">Vibe</span>?
         </div>
       </div>
+      <div className="flex gap-10 mt-6 px-2 items-center cursor-pointer">
+        <i
+          class="fa fa-bookmark hover:text-teal-400 cursor-pointer"
+          aria-hidden="true"
+        ></i>
+        <i
+          class="fa fa-heart hover:text-teal-400 cursor-pointer"
+          aria-hidden="true"
+        ></i>
+        <div>
+          <i class="fa fa-play mx-2" aria-hidden="true"></i>
+          Play Trailer
+        </div>
+      </div>
     </div>
   );
 };
