@@ -2,19 +2,27 @@ import React from "react";
 import { convertMinutesToHoursAndMinutes } from "../../utils";
 import ProgressCircle from "../ProgressCircle";
 
-const MovieInfo = ({ title, date, genres, runtime, percentage }) => {
+const MovieInfo = ({
+  title,
+  date,
+  genres,
+  runtime,
+  percentage,
+  tagline,
+  overview,
+}) => {
   console.log(genres);
   return (
-    <div className="flex-col gap-4 text-white py-10">
+    <div className="flex-col gap-4 w-[100%] lg:w-[80%] text-white py-10">
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2 items-baseline">
+        <div className="flex gap-2 items-baseline flex-col md:flex-row mb-4 md:mb-0">
           <h1 className="text-white text-4xl ">{title}</h1>
           <p className="text-gray-200 text-4xl font-400">
             ({date?.split("-")[0]})
           </p>
-          <p></p>
+        
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="text-slate-400 py-1 text-xs px-2 border-2 border-slate-400">
             PG - 13
           </span>
@@ -33,7 +41,7 @@ const MovieInfo = ({ title, date, genres, runtime, percentage }) => {
           <p>{convertMinutesToHoursAndMinutes(runtime)}</p>
         </div>
       </div>
-      <div className="flex mt-6 items-center gap-2">
+      <div className="flex mt-6 items-center gap-2 flex-wrap">
         <ProgressCircle percentage={percentage} />
         <div className="flex flex-col font-bold">
           <span>User</span> <span>Score</span>
@@ -55,6 +63,16 @@ const MovieInfo = ({ title, date, genres, runtime, percentage }) => {
           <i class="fa fa-play mx-2" aria-hidden="true"></i>
           Play Trailer
         </div>
+      </div>
+      <div className="flex flex-col mt-4 md:px-2 gap-2">
+        <p className="italic text-gray-300">{tagline}</p>
+        <p className="text-xl">Overview</p>
+        <p className="text-gray-300">{overview}</p>
+      </div>
+      <div className="flex justify-between">
+            <div className="flex-col">
+                <p></p>
+            </div>
       </div>
     </div>
   );

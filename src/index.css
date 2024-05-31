@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   padding: 0;
-  font-family: "Source Sans Pro",Arial,sans-serif;
+  font-family: "Source Sans Pro", Arial, sans-serif;
   margin: 0;
 }
 
@@ -23,6 +23,36 @@
   background-position: bottom right;
   background-position-y: top;
   background-size: 70% 200%;
+}
+
+@media (max-width: 1444px) {
+  .background-bottom-right {
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-position-y: top;
+    background-size: 80% 200%;
+  }
+}
+
+@media (max-width: 1444px) {
+  .background-bottom-right {
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-position-y: top;
+    background-size: 100% 100%;
+  }
+
+}
+@media (max-width: 760px) {
+  .background-bottom-right {
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-position-y: top;
+    background-size: 0% 0%;
+  }
 }
 
 @tailwind base;
