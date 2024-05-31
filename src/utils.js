@@ -12,3 +12,11 @@ export function getPathColor(percentage) {
     return `rgb(${redValue}, 255, 0)`;
   }
 }
+
+export const removeDuplicates = (crew) => {
+  const crewById = crew.reduce((acc, member) => {
+    acc[member.id] = member;
+    return acc;
+  }, {});
+  return Object.values(crewById);
+};

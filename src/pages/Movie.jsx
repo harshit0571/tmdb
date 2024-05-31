@@ -3,6 +3,7 @@ import MovieDisplay from "../components/Movie/MovieDisplay";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CastScrollView from "../components/Common/CastScrollView";
+import { removeDuplicates } from "../utils";
 
 const Movie = () => {
   const { id } = useParams();
@@ -34,7 +35,11 @@ const Movie = () => {
       <MovieDisplay movie={movie} providers={providers?.results?.US} />
       <div className="w-[90%] md:w-[70%] m-auto">
         <p className=" text-2xl text-slate-700 py-3">Top Billed Cast</p>
-        <CastScrollView casts={casts?.cast?.slice(0, 10)} />
+        <CastScrollView casts={casts?.cast?.slice(0, 15)} />
+      </div>
+      <div className="w-[90%] md:w-[70%] m-auto">
+        <p className=" text-2xl text-slate-700 py-3">Crew</p>
+        <CastScrollView casts={removeDuplicates(casts?.crew || [])} />
       </div>
     </div>
   );

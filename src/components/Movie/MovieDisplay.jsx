@@ -32,8 +32,8 @@ const MovieDisplay = ({ movie, providers }) => {
           style={isScreenSmall ? backgroundImageStyle : {}}
         >
           <MoviePosterCard
-            provider_logo={providers?.buy[0]?.logo_path}
-            provider_name={providers?.buy[0]?.provider_name}
+            provider_logo={providers?.buy?.length>0 && providers?.buy[0]?.logo_path}
+            provider_name={providers?.buy?.length>0 && providers?.buy[0]?.provider_name}
             poster_path={movie.poster_path}
           />
         </div>
