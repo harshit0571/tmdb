@@ -2,7 +2,7 @@ import React from "react";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 
-const Card = ({ data, loading }) => {
+const Card = ({ data, loading, page }) => {
   console.log(data);
   return (
     <>

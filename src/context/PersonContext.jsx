@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Person from "../pages/Person";
 
 const PersonContext = createContext();
 export const usePerson = () => {
@@ -10,6 +9,8 @@ export const usePerson = () => {
 const PersonProvider = ({ children }) => {
   const { id } = useParams();
   const [person, setPerson] = useState(null);
+  const [personCredits, setPersonCredits] = useState(null);
+
   const getLists = async (api, setState) => {
     try {
       const res = await axios.get(
@@ -25,12 +26,13 @@ const PersonProvider = ({ children }) => {
   console.log(person);
   useEffect(() => {
     const getData = async () => {
-      await getLists(`movie/${id}?language=en-US`, setPerson);
+      await getLists(`person/${id}?language=en-US`, setPerson);
+      await getLists(`person/${id}/combined_credits?language=en-US`, setPersonCredits);
     };
     getData();
   }, []);
   return (
-    <PersonContext.Provider value={{ person }}>
+    <PersonContext.Provider value={{ person ,personCredits}}>
       {children}
     </PersonContext.Provider>
   );
