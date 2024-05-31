@@ -16,7 +16,7 @@ const Card = ({ data, loading, page }) => {
             <div className="relative bg-no-repeat bg-cover bg-center object-cover object-center rounded-xl w-full">
               <img
                 src={
-                  "https://image.tmdb.org/t/p/original/" + data.backdrop_path
+                  "https://image.tmdb.org/t/p/original/" + data.poster_path
                 }
                 className=" rounded-xl w-[200px]"
                 style={{ height: "calc(150px * 1.5)" }}
