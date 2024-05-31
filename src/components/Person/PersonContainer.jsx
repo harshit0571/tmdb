@@ -14,7 +14,7 @@ const PersonContainer = () => {
         alt={`${person?.name}`}
       />
       <div className="flex h-auto lg:h-[450px] overflow-auto flex-col w-full lg:w-[80%] mx-auto p-4 bg-white shadow-lg rounded-lg">
-        <p className="text-3xl font-bold mb-4">{person?.name}</p>
+        <p className="text-3xl font-bold mb-4 text-center md:text-left">{person?.name}</p>
         <div className="mt-2">
           <p className="text-xl py-2 font-semibold">Biography</p>
           <p className="text-justify leading-relaxed">{person?.biography}</p>
