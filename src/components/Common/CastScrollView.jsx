@@ -1,5 +1,6 @@
 import React from "react";
 import CastCard from "./CastCard";
+import { Link } from "react-router-dom";
 
 const CastScrollView = ({ casts }) => {
   return (
@@ -8,12 +9,14 @@ const CastScrollView = ({ casts }) => {
         {casts?.map(
           (cast) =>
             cast.profile_path && (
-              <CastCard
-                profile_path={cast.profile_path}
-                name={cast.name}
-                character={cast.character || cast.job}
-                key={cast.id}
-              />
+              <Link to={`/person/${cast.id}`}>
+                <CastCard
+                  profile_path={cast.profile_path}
+                  name={cast.name}
+                  character={cast.character || cast.job}
+                  key={cast.id}
+                />
+              </Link>
             )
         )}
       </div>

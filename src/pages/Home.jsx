@@ -13,7 +13,6 @@ const Home = () => {
           { name: "Today", api: "/trending/all/day?language=en-US" },
           { name: "This Week", api: "/trending/all/week?language=en-US" },
         ]}
-    
       />
 
       <DisplaySection
@@ -30,7 +29,6 @@ const Home = () => {
             api: "/movie/now_playing?language=en-US&page=1",
           },
         ]}
-    
       />
       <DisplaySection
         title="Free to watch"
@@ -38,7 +36,6 @@ const Home = () => {
           { name: "Movies", api: "/movie/upcoming?language=en-US&page=1" },
           { name: "TV", api: "/tv/airing_today?language=en-US&page=1" },
         ]}
-     
       />
     </div>
   );
