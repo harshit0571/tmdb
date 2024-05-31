@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuBar, setMenuBar] = useState(true);
@@ -9,7 +10,7 @@ const Navbar = () => {
     <div className="w-full bg-darkBlue text-white flex flex-col items-center justify-center">
       <div className="w-[100%] lg:w-[85%] xl:w-[70%] flex md:justify-between p-3 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
         <div className="flex items-center gap-5 md:flex-row flex-wrap justify-center">
-          {menuBar ? (
+          {/* {menuBar ? (
             <i
               class="fa fa-times md:hidden"
               aria-hidden="true"
@@ -26,15 +27,17 @@ const Navbar = () => {
                 setMenuBar(!menuBar);
               }}
             ></i>
-          )}
-          <div className="flex items-center">
-            <p className="text-3xl tracking-wide font-bold text-transparent bg-clip-text bg-gradient">
-              TMDB{" "}
-            </p>
+          )} */}
+          <div className="flex items-center ">
+            <Link to="/">
+              <p className="text-3xl hover:bg-gradient-to-r from-cyan-500 to-cyan-300 tracking-wide font-bold text-transparent bg-clip-text bg-gradient cursor-pointer">
+                TMDB{" "}
+              </p>
+            </Link>
             <span className="ml-4 inline-block w-[50px] h-5 bg-gradient-to-r from-cyan-500 to-cyan-300 rounded-lg"></span>
           </div>
 
-          {menuBar && (
+          {/* {menuBar && (
             <div className="gap-3 md:flex md:flex-row w-full md:w-max flex-col justify-center text-center">
               <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
                 Movies
@@ -49,7 +52,7 @@ const Navbar = () => {
                 More
               </p>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="flex gap-7 items-baseline text-xl">
