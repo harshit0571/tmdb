@@ -7,7 +7,7 @@ const ScrollPerson = () => {
   const { personCredits } = usePerson();
 
   return (
-    <div className="w-full flex relative justify-center px-2 items-center transition-full duration-200">
+    <div className="w-full flex relative justify-start px-2 items-center transition-full duration-200">
       <div className="flex gap-5 overflow-auto pb-3 ">
         {personCredits?.cast?.map(
           (cast) =>
