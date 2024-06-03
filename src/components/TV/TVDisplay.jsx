@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import MoviePosterCard from "../Movie/MoviePosterCard";
-import MovieInfo from "../Movie/MovieInfo";
+import PosterCard from "../Common/PosterCard";
+import Info from "../Common/Info";
 
 const MovieDisplay = ({ tv, providers }) => {
   const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 768);
@@ -31,7 +31,7 @@ const MovieDisplay = ({ tv, providers }) => {
           className="w-full md:w-max moviecard bg-cover"
           style={isScreenSmall ? backgroundImageStyle : {}}
         >
-          <MoviePosterCard
+          <PosterCard
             provider_logo={
               providers?.buy?.length > 0 && providers?.buy[0]?.logo_path
             }
@@ -41,7 +41,7 @@ const MovieDisplay = ({ tv, providers }) => {
             poster_path={tv.poster_path}
           />
         </div>
-        <MovieInfo
+        <Info
           title={tv.name}
           date={tv.first_air_date}
           genres={tv.genres}

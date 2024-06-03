@@ -1,6 +1,6 @@
 import React from "react";
 
-const MoviePosterCard = ({ poster_path, provider_logo, provider_name }) => {
+const PosterCard = ({ poster_path, provider_logo, provider_name }) => {
   return (
     <div className="flex flex-col w-max">
       <img
@@ -27,4 +27,4 @@ const MoviePosterCard = ({ poster_path, provider_logo, provider_name }) => {
   );
 };
 
-export default MoviePosterCard;
+export default PosterCard;
