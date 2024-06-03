@@ -3,9 +3,9 @@ import { getPathColor } from "../utils";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const ProgressCircle = ({ percentage,color="white" }) => {
+const ProgressCircle = ({ percentage,color="white" , w="w-[50px]",bg="none"}) => {
   return (
-    <div className="w-[50px] text-white font-bold">
+    <div className={w+" text-white font-bold rounded-full bg-"+bg}>
     <CircularProgressbar
       value={percentage}
       text={`${percentage}%`}
@@ -16,7 +16,7 @@ const ProgressCircle = ({ percentage,color="white" }) => {
         pathColor: getPathColor(percentage),
         textColor: color,
         trailColor: "#d6d6d6",
-        backgroundColor: "#3e98c7",
+        backgroundColor: bg,
       })}
     />
     </div>
