@@ -52,7 +52,7 @@ const Navbar = () => {
               </div>
               {showSignOut && (
                 <button
-                  className="bg-red-500 text-white rounded-lg cursor-pointer absolute top-full mt-6 left-1/2 transform -translate-x-1/2 min-w-[80px] py-1 shadow-lg text-lg"
+                  className="bg-red-500 text-white rounded-lg cursor-pointer absolute top-full mt-6 left-1/2 transform -translate-x-1/2 min-w-[80px] py-1 shadow-lg text-lg z-50"
                   onClick={() => {
                     signOut();
                   }}
