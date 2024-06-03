@@ -1,33 +1,22 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-  const [menuBar, setMenuBar] = useState(true);
   const [searchBar, setSearchBar] = useState(false);
+  const [showSignOut, setShowSignOut] = useState(false);
+  const navigate = useNavigate();
 
+  const { user, setUser } = useAuth();
+  const signOut = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
   return (
-    <div className="w-full bg-darkBlue text-white flex flex-col items-center justify-center">
+    <div className="w-full bg-darkBlue text-white flex flex-col items-center justify-center relative">
       <div className="w-[100%] lg:w-[85%] xl:w-[70%] flex md:justify-between p-3 md:items-baseline md:flex-row flex-col items-center justify-center md:gap-0 gap-5">
         <div className="flex items-center gap-5 md:flex-row flex-wrap justify-center">
-          {/* {menuBar ? (
-            <i
-              class="fa fa-times md:hidden"
-              aria-hidden="true"
-              onClick={() => {
-                setMenuBar(!menuBar);
-                console.log(menuBar);
-              }}
-            ></i>
-          ) : (
-            <i
-              class="fa fa-bars md:hidden"
-              aria-hidden="true"
-              onClick={() => {
-                setMenuBar(!menuBar);
-              }}
-            ></i>
-          )} */}
           <div className="flex items-center ">
             <Link to="/">
               <p className="text-3xl hover:bg-gradient-to-r from-cyan-500 to-cyan-300 tracking-wide font-bold text-transparent bg-clip-text bg-gradient cursor-pointer">
@@ -36,38 +25,48 @@ const Navbar = () => {
             </Link>
             <span className="ml-4 inline-block w-[50px] h-5 bg-gradient-to-r from-cyan-500 to-cyan-300 rounded-lg"></span>
           </div>
-
-          {/* {menuBar && (
-            <div className="gap-3 md:flex md:flex-row w-full md:w-max flex-col justify-center text-center">
-              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-                Movies
-              </p>
-              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-                TV Shows
-              </p>
-              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-                People
-              </p>
-              <p className="cursor-pointer hover:bg-gradient hover:text-transparent hover:bg-clip-text">
-                More
-              </p>
-            </div>
-          )} */}
         </div>
 
-        <div className="flex gap-7 items-baseline text-xl">
+        <div className="flex gap-7 items-baseline text-xl ">
           <i
             class="fa fa-bookmark hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
+            onClick={() => {
+              user ? navigate("/bookmark") : navigate("/login");
+            }}
           ></i>
           <i
             class="fa fa-heart hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
+            onClick={() => {
+              user ? navigate("/liked") : navigate("/login");
+            }}
           ></i>
+          {user ? (
+            <div className="relative inline-block">
+              <div
+                className="bg-gray-400 h-[30px] w-[30px] min-h-[25px] min-w-[25px] text-xl rounded-full transition-all hover:bg-gradient text-center pt-[3px] text-white cursor-pointer flex items-center justify-center"
+                onClick={() => setShowSignOut(!showSignOut)}
+              >
+                {user[0]}
+              </div>
+              {showSignOut && (
+                <button
+                  className="bg-red-500 text-white rounded-lg cursor-pointer absolute top-full mt-6 left-1/2 transform -translate-x-1/2 min-w-[80px] py-1 shadow-lg text-lg"
+                  onClick={() => {
+                    signOut();
+                  }}
+                >
+                  Sign Out
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="bg-gradient px-2 rounded-lg cursor-pointer">
+              <Link to="/login"> Login</Link>
+            </div>
+          )}
 
-          <div className="bg-gray-400 h-[30px] w-[30px] min-h-[25px] min-w-[25px] text-xl rounded-full transition-all hover:bg-gradient text-center pt-[0.9] text-white cursor-pointer">
-            H
-          </div>
           {searchBar ? (
             <i
               class="fa fa-times text-2xl text-blue-400 hover:text-teal-400 cursor-pointer"
