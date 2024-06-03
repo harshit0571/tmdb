@@ -1,6 +1,7 @@
 import React from "react";
 import { convertMinutesToHoursAndMinutes } from "../../utils";
 import ProgressCircle from "../ProgressCircle";
+import { useBookmark } from "../../context/BookmarksContext";
 
 const MovieInfo = ({
   title,
@@ -10,8 +11,11 @@ const MovieInfo = ({
   percentage,
   tagline,
   overview,
+  id,
+  img,
 }) => {
   console.log(genres);
+  const { addBookmark, removeBookmark, bookmarkExists } = useBookmark();
   return (
     <div className="flex-col gap-4 w-[100%] lg:w-[80%] text-white py-10">
       <div className="flex flex-col gap-2">
@@ -20,7 +24,6 @@ const MovieInfo = ({
           <p className="text-gray-200 text-4xl font-400">
             ({date?.split("-")[0]})
           </p>
-        
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-slate-400 py-1 text-xs px-2 border-2 border-slate-400">
@@ -51,10 +54,29 @@ const MovieInfo = ({
         </div>
       </div>
       <div className="flex gap-10 mt-6 px-2 items-center cursor-pointer">
-        <i
-          class="fa fa-bookmark hover:text-teal-400 cursor-pointer"
-          aria-hidden="true"
-        ></i>
+        {bookmarkExists(id) ? (
+          <i
+            class="fa fa-bookmark hover:text-teal-400 cursor-pointer text-red-500"
+            aria-hidden="true"
+            onClick={() => {
+              removeBookmark(id);
+            }}
+          ></i>
+        ) : (
+          <i
+            class="fa fa-bookmark hover:text-teal-400 cursor-pointer"
+            aria-hidden="true"
+            onClick={() => {
+              addBookmark({
+                name: title,
+                date: date,
+                overview: overview,
+                id: id,
+                img: img,
+              });
+            }}
+          ></i>
+        )}
         <i
           class="fa fa-heart hover:text-teal-400 cursor-pointer"
           aria-hidden="true"
@@ -70,9 +92,9 @@ const MovieInfo = ({
         <p className="text-gray-300">{overview}</p>
       </div>
       <div className="flex justify-between">
-            <div className="flex-col">
-                <p></p>
-            </div>
+        <div className="flex-col">
+          <p></p>
+        </div>
       </div>
     </div>
   );

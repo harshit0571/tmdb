@@ -32,8 +32,12 @@ const MovieDisplay = ({ movie, providers }) => {
           style={isScreenSmall ? backgroundImageStyle : {}}
         >
           <MoviePosterCard
-            provider_logo={providers?.buy?.length>0 && providers?.buy[0]?.logo_path}
-            provider_name={providers?.buy?.length>0 && providers?.buy[0]?.provider_name}
+            provider_logo={
+              providers?.buy?.length > 0 && providers?.buy[0]?.logo_path
+            }
+            provider_name={
+              providers?.buy?.length > 0 && providers?.buy[0]?.provider_name
+            }
             poster_path={movie.poster_path}
           />
         </div>
@@ -45,6 +49,8 @@ const MovieDisplay = ({ movie, providers }) => {
           percentage={Math.round(movie.vote_average * 10 || 10)}
           tagline={movie.tagline}
           overview={movie.overview}
+          id={movie.id}
+          img={movie.poster_path}
         />
       </div>
     </div>

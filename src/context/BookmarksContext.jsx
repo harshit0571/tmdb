@@ -22,16 +22,29 @@ const BookmarksProvider = ({ children }) => {
     setBookmarks(updatedBookmarks);
     localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
   };
-  const removeBookmark = (bookmarkToRemove) => {
+  const removeBookmark = (id) => {
     const updatedBookmarks = bookmarks.filter(
-      (bookmark) => bookmark.id !== bookmarkToRemove.id
+      (bookmark) => bookmark.id !== id
     );
     setBookmarks(updatedBookmarks);
     localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
   };
+  const bookmarkExists = (id) => {
+    console.log("exist", id);
+    console.log(bookmarks.some((bookmark) => bookmark.id === id))
+    return bookmarks.some((bookmark) => bookmark.id === id);
+  };
 
   return (
-    <BookmarksContext.Provider value={{ bookmarks, setBookmarks, addBookmark, removeBookmark }}>
+    <BookmarksContext.Provider
+      value={{
+        bookmarks,
+        setBookmarks,
+        addBookmark,
+        removeBookmark,
+        bookmarkExists,
+      }}
+    >
       {children}
     </BookmarksContext.Provider>
   );
