@@ -56,10 +56,10 @@ const MovieInfo = ({
           What's your <span className="border-b-2 border-blue-800">Vibe</span>?
         </div>
       </div>
-      <div className="flex gap-10 mt-6 px-2 items-center cursor-pointer">
+      <div className="flex gap-6 mt-6 px-2 items-center cursor-pointer">
         {bookmarkExists(id) ? (
           <i
-            class="fa fa-bookmark hover:text-teal-400 cursor-pointer text-red-500"
+            class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:text-teal-400 hover:bg-slate-600 cursor-pointer text-red-500"
             aria-hidden="true"
             onClick={() => {
               removeBookmark(id);
@@ -67,7 +67,7 @@ const MovieInfo = ({
           ></i>
         ) : (
           <i
-            class="fa fa-bookmark hover:text-teal-400 cursor-pointer"
+            class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
             onClick={() => {
               addBookmark({
@@ -82,7 +82,7 @@ const MovieInfo = ({
         )}
         {favouriteExists(id) ? (
           <i
-            class="fa fa-heart hover:text-teal-400 text-red-500 cursor-pointer"
+            class="fa fa-heart p-3 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 text-red-500 cursor-pointer"
             aria-hidden="true"
             onClick={() => {
               removeFavourite(id);
@@ -90,7 +90,7 @@ const MovieInfo = ({
           ></i>
         ) : (
           <i
-            class="fa fa-heart hover:text-teal-400 cursor-pointer"
+            class="fa fa-heart p-3 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
             onClick={() => {
               addFavourite({
