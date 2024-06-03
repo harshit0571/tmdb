@@ -3,8 +3,8 @@ import { usePerson } from "../../context/PersonContext";
 import ProgressCircle from "../ProgressCircle";
 
 const PersonContainer = () => {
-  const { person, personCredits } = usePerson();
-  console.log(personCredits);
+  const { person } = usePerson();
+  
 
   return (
     <div className="flex flex-col lg:flex-row w-full lg:w-[90%] mb-10 mt-10 xl:w-[75%] mx-auto">

@@ -6,7 +6,10 @@ const Person = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <PersonContainer />
-      <ScrollPerson />
+      <div className="lg:w-[90%] mb-10 mt-10 xl:w-[75%]  ">
+        <h1 className="font-bold text-2xl pb-4">Known for</h1>
+        <ScrollPerson />
+      </div>
     </div>
   );
 };
