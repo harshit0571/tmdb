@@ -2,11 +2,11 @@ import React from "react";
 
 const PosterCard = ({ poster_path, provider_logo, provider_name }) => {
   return (
-    <div className="flex flex-col w-max">
+    <div className="flex flex-col w-max p-3">
       <img
         src={"https://image.tmdb.org/t/p/original/" + poster_path}
         className={
-          "h-[225px] md:h-[350px] lg:h-[450px] rounded-t-lg " +
+          "h-[225px] md:h-[350px] lg:h-[450px] rounded-t-lg" +
           (!provider_name && "rounded-b-lg")
         }
       />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const SavedCard = ({ card, removeCard }) => {
   return (
+
     <li
       key={card.id}
       className="flex flex-col md:flex-row items-start p-4 bg-white rounded-lg shadow-md w-full md:w-[60%]"
