@@ -47,7 +47,7 @@ const Footer = () => {
           {user ? "Hi " + user + "!" : <Link to="login">Login</Link>}
         </div>
       </div>
-      <div className="flex md:flex-row flex-col flex-wrap gap-10">
+      <div className="flex md:flex-row flex-wrap gap-10">
         {footerData.map((section, index) => (
           <div key={index} className="flex flex-col text-white">
             <h1 className="font-bold text-xl">{section.title}</h1>

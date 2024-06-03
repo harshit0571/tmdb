@@ -28,7 +28,7 @@ const MovieDisplay = ({ movie, providers }) => {
     >
       <div className="w-[100%] lg:w-[80%] xl:w-[70%] flex h-max md:gap-10 md:flex-row flex-col items-center">
         <div
-          className="w-full md:w-max moviecard bg-cover"
+          className="w-full p-2 md:p-0 md:w-max moviecard bg-cover"
           style={isScreenSmall ? backgroundImageStyle : {}}
         >
           <PosterCard
