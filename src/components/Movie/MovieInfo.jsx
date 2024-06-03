@@ -2,6 +2,7 @@ import React from "react";
 import { convertMinutesToHoursAndMinutes } from "../../utils";
 import ProgressCircle from "../ProgressCircle";
 import { useBookmark } from "../../context/BookmarksContext";
+import { useFavorites } from "../../context/FavouritesContext";
 
 const MovieInfo = ({
   title,
@@ -16,6 +17,8 @@ const MovieInfo = ({
 }) => {
   console.log(genres);
   const { addBookmark, removeBookmark, bookmarkExists } = useBookmark();
+  const { addFavourite, removeFavourite, favouriteExists } = useFavorites();
+
   return (
     <div className="flex-col gap-4 w-[100%] lg:w-[80%] text-white py-10">
       <div className="flex flex-col gap-2">
@@ -77,10 +80,30 @@ const MovieInfo = ({
             }}
           ></i>
         )}
-        <i
-          class="fa fa-heart hover:text-teal-400 cursor-pointer"
-          aria-hidden="true"
-        ></i>
+        {favouriteExists(id) ? (
+          <i
+            class="fa fa-heart hover:text-teal-400 text-red-500 cursor-pointer"
+            aria-hidden="true"
+            onClick={() => {
+              removeFavourite(id);
+            }}
+          ></i>
+        ) : (
+          <i
+            class="fa fa-heart hover:text-teal-400 cursor-pointer"
+            aria-hidden="true"
+            onClick={() => {
+              addFavourite({
+                name: title,
+                date: date,
+                overview: overview,
+                id: id,
+                img: img,
+              });
+            }}
+          ></i>
+        )}
+
         <div>
           <i class="fa fa-play mx-2" aria-hidden="true"></i>
           Play Trailer

@@ -14,6 +14,8 @@ import Login from "./pages/Login";
 import AuthProvider from "./context/AuthContext";
 import Bookmark from "./pages/Bookmark";
 import BookmarksProvider from "./context/BookmarksContext";
+import Favourites from "./pages/Favourites";
+import FavoritesProvider from "./context/FavouritesContext";
 
 const AppContent = () => {
   const location = useLocation();
@@ -27,7 +29,8 @@ const AppContent = () => {
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="/person/:id" element={<PersonWrapper />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/bookmark" element={<Bookmark />} />
+        <Route path="/watchlist" element={<Bookmark />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
       {showNavbarAndFooter && <Footer />}
     </>
@@ -37,9 +40,11 @@ const AppContent = () => {
 const App = () => (
   <AuthProvider>
     <BookmarksProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <FavoritesProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </FavoritesProvider>
     </BookmarksProvider>
   </AuthProvider>
 );

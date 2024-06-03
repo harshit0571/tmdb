@@ -32,14 +32,14 @@ const Navbar = () => {
             class="fa fa-bookmark hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
             onClick={() => {
-              user ? navigate("/bookmark") : navigate("/login");
+              user ? navigate("/watchlist") : navigate("/login");
             }}
           ></i>
           <i
             class="fa fa-heart hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
             onClick={() => {
-              user ? navigate("/liked") : navigate("/login");
+              user ? navigate("/favourites") : navigate("/login");
             }}
           ></i>
           {user ? (
