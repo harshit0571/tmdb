@@ -16,6 +16,7 @@ const MovieInfo = ({
   overview,
   id,
   img,
+  type,
 }) => {
   console.log(genres);
   const { user } = useAuth();
@@ -81,6 +82,7 @@ const MovieInfo = ({
                   overview: overview,
                   id: id,
                   img: img,
+                  media_type: type,
                 });
               }}
             ></i>
@@ -104,6 +106,7 @@ const MovieInfo = ({
                   overview: overview,
                   id: id,
                   img: img,
+                  media_type: type,
                 });
               }}
             ></i>

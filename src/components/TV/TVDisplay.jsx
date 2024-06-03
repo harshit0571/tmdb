@@ -51,6 +51,7 @@ const MovieDisplay = ({ tv, providers }) => {
           overview={tv.overview}
           id={tv.id}
           img={tv.poster_path}
+          type="tv"
         />
       </div>
     </div>
