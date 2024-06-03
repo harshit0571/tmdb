@@ -1,4 +1,6 @@
 import React from "react";
+import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const footerData = [
   {
@@ -31,6 +33,8 @@ const footerData = [
 ];
 
 const Footer = () => {
+  const { user } = useAuth();
+
   return (
     <div className="bg-darkBlue w-full h-max p-10 gap-10 bottom-0 flex md:flex-row flex-col justify-center items-center">
       <div className="flex flex-col gap-6">
@@ -39,8 +43,8 @@ const Footer = () => {
           className="w-[150px]"
           alt="TMDB Logo"
         />
-        <div className="py-2 px-5 bg-white w-max rounded-lg text-cl text-cyan-400 font-bold">
-          Hi Harshit!
+        <div className="py-2 px-5 cursor-pointer bg-white w-max rounded-lg text-cl text-cyan-400 font-bold">
+          {user ? "Hi " + user + "!" : <Link to="login">Login</Link>}
         </div>
       </div>
       <div className="flex md:flex-row flex-col flex-wrap gap-10">
