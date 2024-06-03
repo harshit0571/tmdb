@@ -20,3 +20,9 @@ export const removeDuplicates = (crew) => {
   }, {});
   return Object.values(crewById);
 };
+
+export const searchType = {
+  person: <i class="fa fa-user text-black hover:text-teal-400 cursor-pointer mr-2" aria-hidden="true"></i>,
+  movie: <i class="fa fa-film text-black hover:text-teal-400 cursor-pointer mr-2" aria-hidden="true"></i>,
+  tv: <i class="fa fa-television text-black hover:text-teal-400 cursor-pointer mr-2" aria-hidden="true"></i>,
+};

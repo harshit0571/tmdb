@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useDebounce } from "../hooks/DebounceHook";
+import { Link } from "react-router-dom";
+import { searchType } from "../utils";
 
-const SearchBar = () => {
+const SearchBar = ({ togglebar }) => {
   const [showTrending, setShowTrending] = useState(true);
   const [showSearches, setShowSearches] = useState(true);
   const [searchValue, setSearchValue] = useState("");
@@ -99,20 +101,38 @@ const SearchBar = () => {
             {searchesArray.length < 1 ? (
               <>no search results</>
             ) : (
-              searchesArray.map((search) => {
+              searchesArray.map((search, index) => {
                 return (
-                  <div
-                    className="w-full border-b-2 border-slate-100 bg-white py-1 sm:px-10 z-50"
+                  <Link
                     key={search.id}
+                    to={search.media_type + "/" + search.id}
+                    className="w-full z-50"
+                    onClick={() => {
+                      console.log(search.media_type);
+                      togglebar(false);
+                    }}
+                    // onClick={() => {
+                    //   setShowSearches(false);
+                    // }}
                   >
-                    <p className="w-[95%] lg:w-[85%] max-h-[30px] whitespace-nowrap overflow-x-auto xl:w-[65%] m-auto text-black italic">
-                      <i
-                        className="fa fa-search text-black hover:text-teal-400 cursor-pointer mr-2"
-                        aria-hidden="true"
-                      ></i>{" "}
-                      {search.name ? search.name : search.title}
-                    </p>
-                  </div>
+                    <div
+                      className="w-full border-b-2 border-slate-100 bg-white py-1 sm:px-10 z-50"
+                      key={search.id}
+                    >
+                      <p className="w-[95%] lg:w-[85%] max-h-[30px] whitespace-nowrap overflow-x-auto xl:w-[65%] m-auto text-black italic">
+                        {index >= 0 && index <= 2 ? (
+                          // <div>f</div>
+                          searchType[search.media_type]
+                        ) : (
+                          <i
+                            className="fa fa-search text-black hover:text-teal-400 cursor-pointer mr-2"
+                            aria-hidden="true"
+                          ></i>
+                        )}
+                        {search.name ? search.name : search.title}
+                      </p>
+                    </div>
+                  </Link>
                 );
               })
             )}

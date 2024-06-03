@@ -86,7 +86,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <div className="relative w-full">{searchBar && <SearchBar />}</div>
+      <div className="relative w-full">{searchBar && <SearchBar toggleBar={setSearchBar}/>}</div>
     </div>
   );
 };
