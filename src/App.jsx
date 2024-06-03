@@ -16,6 +16,7 @@ import Bookmark from "./pages/Bookmark";
 import BookmarksProvider from "./context/BookmarksContext";
 import Favourites from "./pages/Favourites";
 import FavoritesProvider from "./context/FavouritesContext";
+import TV from "./pages/TV";
 
 const AppContent = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/watchlist" element={<Bookmark />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/tv/:id" element={<TV />} />
       </Routes>
       {showNavbarAndFooter && <Footer />}
     </>
