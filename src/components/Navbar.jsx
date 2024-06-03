@@ -2,16 +2,24 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useFavorites } from "../context/FavouritesContext";
+import { useBookmark } from "../context/BookmarksContext";
 
 const Navbar = () => {
   const [searchBar, setSearchBar] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
   const navigate = useNavigate();
+  const { setFavorites } = useFavorites();
+  const { setBookmarks } = useBookmark();
 
   const { user, setUser } = useAuth();
   const signOut = () => {
     setUser(null);
     localStorage.removeItem("user");
+    localStorage.removeItem("bookmarks");
+    localStorage.removeItem("favorites");
+    setFavorites([]);
+    setBookmarks([]);
   };
   return (
     <div className="w-full bg-darkBlue text-white flex flex-col items-center justify-center relative">
@@ -86,7 +94,9 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <div className="relative w-full">{searchBar && <SearchBar toggleBar={setSearchBar}/>}</div>
+      <div className="relative w-full">
+        {searchBar && <SearchBar toggleBar={setSearchBar} />}
+      </div>
     </div>
   );
 };

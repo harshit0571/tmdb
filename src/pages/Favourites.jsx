@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFavorites } from "../context/FavouritesContext";
 import NotFound from "../components/WatchList/NotFound";
 import SavedCard from "../components/WatchList/Savedcard";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Favorites = () => {
   const { favorites, removeFavourite } = useFavorites();
+  const { user } = useAuth();
+  const navigation = useNavigate();
+
+  useEffect(() => {
+    const checkUser = () => {
+      if (!user) {
+        navigation("/login");
+      }
+    };
+    checkUser();
+  }, [user]);
   return (
     <div className="p-4 flex flex-col items-center min-h-[400px] md:min-h-[700px]">
       <div className="flex items-center mb-4">

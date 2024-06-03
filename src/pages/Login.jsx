@@ -58,9 +58,9 @@ const Login = () => {
           </button>
         </form>
         <p className="mt-5 text-gray-400">
-          Don't have an account?{" "}
-          <a href="/register" className="text-indigo-500 hover:text-indigo-400">
-            Register here!
+          Browse without loggin?{" "}
+          <a href="/" className="text-indigo-500 hover:text-indigo-400">
+            Click here!
           </a>
         </p>
       </div>

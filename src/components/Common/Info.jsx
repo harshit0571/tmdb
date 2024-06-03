@@ -2,6 +2,8 @@ import React from "react";
 import { convertMinutesToHoursAndMinutes } from "../../utils";
 import ProgressCircle from "../ProgressCircle";
 import { useBookmark } from "../../context/BookmarksContext";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../../context/FavouritesContext";
 
 const MovieInfo = ({
@@ -16,8 +18,10 @@ const MovieInfo = ({
   img,
 }) => {
   console.log(genres);
+  const { user } = useAuth();
   const { addBookmark, removeBookmark, bookmarkExists } = useBookmark();
   const { addFavourite, removeFavourite, favouriteExists } = useFavorites();
+  const navigate = useNavigate();
 
   return (
     <div className="flex-col gap-4 w-[100%] lg:w-[80%] text-white py-10">
@@ -56,59 +60,84 @@ const MovieInfo = ({
           What's your <span className="border-b-2 border-blue-800">Vibe</span>?
         </div>
       </div>
-      <div className="flex gap-6 mt-6 px-2 items-center cursor-pointer">
-        {bookmarkExists(id) ? (
+      {user ? (
+        <div className="flex gap-6 mt-6 px-2 items-center cursor-pointer">
+          {bookmarkExists(id) ? (
+            <i
+              class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:text-teal-400 hover:bg-slate-600 cursor-pointer text-red-500"
+              aria-hidden="true"
+              onClick={() => {
+                removeBookmark(id);
+              }}
+            ></i>
+          ) : (
+            <i
+              class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => {
+                addBookmark({
+                  name: title,
+                  date: date,
+                  overview: overview,
+                  id: id,
+                  img: img,
+                });
+              }}
+            ></i>
+          )}
+          {favouriteExists(id) ? (
+            <i
+              class="fa fa-heart p-3 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 text-red-500 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => {
+                removeFavourite(id);
+              }}
+            ></i>
+          ) : (
+            <i
+              class="fa fa-heart p-3 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => {
+                addFavourite({
+                  name: title,
+                  date: date,
+                  overview: overview,
+                  id: id,
+                  img: img,
+                });
+              }}
+            ></i>
+          )}
+
+          <div>
+            <i class="fa fa-play mx-2" aria-hidden="true"></i>
+            Play Trailer
+          </div>
+        </div>
+      ) : (
+        <div className="flex gap-6 mt-6 px-2 items-center cursor-pointer">
           <i
-            class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:text-teal-400 hover:bg-slate-600 cursor-pointer text-red-500"
+            class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:text-teal-400 hover:bg-slate-600 cursor-pointer "
             aria-hidden="true"
             onClick={() => {
-              removeBookmark(id);
+              navigate("/login");
             }}
           ></i>
-        ) : (
-          <i
-            class="fa fa-bookmark p-3 px-4 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 cursor-pointer"
-            aria-hidden="true"
-            onClick={() => {
-              addBookmark({
-                name: title,
-                date: date,
-                overview: overview,
-                id: id,
-                img: img,
-              });
-            }}
-          ></i>
-        )}
-        {favouriteExists(id) ? (
-          <i
-            class="fa fa-heart p-3 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 text-red-500 cursor-pointer"
-            aria-hidden="true"
-            onClick={() => {
-              removeFavourite(id);
-            }}
-          ></i>
-        ) : (
           <i
             class="fa fa-heart p-3 rounded-full bg-darkBlue hover:bg-slate-600  hover:text-teal-400 cursor-pointer"
             aria-hidden="true"
             onClick={() => {
-              addFavourite({
-                name: title,
-                date: date,
-                overview: overview,
-                id: id,
-                img: img,
-              });
+              navigate("/login");
             }}
           ></i>
-        )}
 
-        <div>
-          <i class="fa fa-play mx-2" aria-hidden="true"></i>
-          Play Trailer
+          <div>
+            <i class="fa fa-play mx-2" aria-hidden="true"></i>
+            Play Trailer
+          </div>
         </div>
-      </div>
+      )}
+
       <div className="flex flex-col mt-4 md:px-2 gap-2">
         <p className="italic text-gray-300">{tagline}</p>
         <p className="text-xl">Overview</p>
