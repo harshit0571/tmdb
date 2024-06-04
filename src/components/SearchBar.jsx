@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useDebounce } from "../hooks/DebounceHook";
 import { Link } from "react-router-dom";
-import { searchType } from "../utils";
+import { handleClickOutside, searchType } from "../utils";
 
 const SearchBar = ({ togglebar }) => {
   const [showTrending, setShowTrending] = useState(true);
@@ -31,11 +31,6 @@ const SearchBar = ({ togglebar }) => {
     setShowTrending(value === "");
   };
 
-  const handleClickOutside = (event) => {
-    if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
-      setShowSearches(false);
-    }
-  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
