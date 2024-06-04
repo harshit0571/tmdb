@@ -6,10 +6,10 @@ const SavedCard = ({ card, removeCard }) => {
 
     <li
       key={card.id}
-      className="flex flex-col md:flex-row items-start p-4 bg-white rounded-lg shadow-md w-full md:w-[60%]"
+      className="flex flex-col md:flex-row items-start p-4 bg-gradient rounded-lg shadow-md w-full md:w-[60%]"
     >
       <Link
-        className="w-full m-auto flex justify-center"
+        className="w-full m-auto flex flex-col md:flex-row items-start"
         to={"/" + card.media_type + "/" + card.id}
       >
         <img

@@ -1,12 +1,20 @@
 import React from "react";
-import { usePerson } from "../../context/PersonContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const PersonCard = ({ cast }) => {
   return (
     <div className="flex flex-col">
-      <img
+      {/* <img
         src={"https://image.tmdb.org/t/p/w300/" + cast.poster_path}
         className=" rounded-xl w-[130px] h-[195px] min-w-[130px]"
+      /> */}
+
+      <LazyLoadImage
+        src={"https://image.tmdb.org/t/p/w300/" + cast.poster_path}
+        width={130}
+        height={195}
+        alt="Image Alt"
+        className="min-w-[130px] min-h-[195px]"
       />
     </div>
   );

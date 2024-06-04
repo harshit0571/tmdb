@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import TVDisplay from "../components/TV/TVDisplay";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -33,7 +33,9 @@ const TV = () => {
     };
     getData();
   }, []);
-  console.log(tv, "tv");
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="h-full w-full">
       <TVDisplay tv={tv} providers={providers?.results?.US} />

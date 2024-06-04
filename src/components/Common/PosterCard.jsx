@@ -2,7 +2,7 @@ import React from "react";
 
 const PosterCard = ({ poster_path, provider_logo, provider_name }) => {
   return (
-    <div className="flex flex-col w-max p-3">
+    <div className="flex flex-col w-max bg-darkBlue min-w-[180px] md:min-w-[230px] lg:min-w-[300px] rounded-md">
       <img
         src={"https://image.tmdb.org/t/p/original/" + poster_path}
         className={

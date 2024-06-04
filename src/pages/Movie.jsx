@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import MovieDisplay from "../components/Movie/MovieDisplay";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -30,6 +30,10 @@ const Movie = () => {
     };
     getData();
   }, []);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="h-full w-full">
       <MovieDisplay movie={movie} providers={providers?.results?.US} />
@@ -39,7 +43,7 @@ const Movie = () => {
       </div>
       <div className="w-[90%] md:w-[70%] m-auto">
         <p className=" text-2xl text-slate-700 py-3">Crew</p>
-        <CastScrollView casts={removeDuplicates(casts?.crew || [])} />
+        <CastScrollView casts={(casts?.crew || [])} />
       </div>
     </div>
   );

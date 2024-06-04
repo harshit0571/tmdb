@@ -1,10 +1,12 @@
 import React from "react";
 import Card from "./Card";
+import Loaderscroll from "../LoaderScroll";
 
 const ScrollView = ({ data, loading, page = "home" }) => {
   return (
     <div className="w-full flex relative justify-center items-center transition-full duration-200">
       <div className="flex gap-5 overflow-auto pb-3 px-10 ">
+      {!data && <Loaderscroll />}
         {data?.map(
           (card) =>
             card.backdrop_path && (

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../ListContainer/Loader";
 
 const CastCard = ({ profile_path, name, character }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,8 +22,8 @@ const CastCard = ({ profile_path, name, character }) => {
               : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
           }
           className=" rounded-t-xl min-w-[138px] w-full h-[175px]"
-          onLoad={handleImageLoad}
         />
+        
       </div>
 
       <div className="px-2">
