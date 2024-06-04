@@ -43,7 +43,7 @@ const Movie = () => {
       </div>
       <div className="w-[90%] md:w-[70%] m-auto">
         <p className=" text-2xl text-slate-700 py-3">Crew</p>
-        <CastScrollView casts={(casts?.crew || [])} />
+        <CastScrollView casts={removeDuplicates(casts?.crew || []).splice(0,15)} />
       </div>
     </div>
   );

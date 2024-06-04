@@ -1,5 +1,4 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const PersonCard = ({ cast }) => {
   return (
@@ -9,7 +8,7 @@ const PersonCard = ({ cast }) => {
         className=" rounded-xl w-[130px] h-[195px] min-w-[130px]"
       /> */}
 
-      <LazyLoadImage
+      <img
         src={"https://image.tmdb.org/t/p/w300/" + cast.poster_path}
         width={130}
         height={195}
