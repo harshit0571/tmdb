@@ -17,12 +17,12 @@ const Card = ({ data, loading, page }) => {
           <div className="flex flex-col gap-5 min-w-[170px]  card-transition w-full">
             <div className="relative bg-no-repeat bg-cover bg-center object-cover object-center rounded-xl w-full">
               <div
-                className=" rounded-xl w-[200px] bg-gray-200"
+                className=" rounded-xl max-w-[200px] bg-gray-200"
                 style={{ height: "calc(150px * 1.5)" }}
               >
                 <img
                   src={
-                    "https://image.tmdb.org/t/p/original/" + data.poster_path
+                    "https://image.tmdb.org/t/p/w300/" + data.poster_path
                   }
                   className=" rounded-xl w-[200px]"
                   style={{ height: "calc(150px * 1.5)" }}
