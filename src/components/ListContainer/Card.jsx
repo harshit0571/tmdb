@@ -14,15 +14,26 @@ const Card = ({ data, loading, page }) => {
         </div>
       ) : (
         <Link to={data?.title ? `/movie/${data.id}` : `/tv/${data.id}`}>
-          <div className="flex flex-col gap-5 min-w-[170px] card-transition w-full">
+          <div className="flex flex-col gap-5 min-w-[170px]  card-transition w-full">
             <div className="relative bg-no-repeat bg-cover bg-center object-cover object-center rounded-xl w-full">
-              <img
-                src={"https://image.tmdb.org/t/p/original/" + data.poster_path}
-                className=" rounded-xl w-[200px]"
+              <div
+                className=" rounded-xl w-[200px] bg-gray-200"
                 style={{ height: "calc(150px * 1.5)" }}
-              />
+              >
+                <img
+                  src={
+                    "https://image.tmdb.org/t/p/original/" + data.poster_path
+                  }
+                  className=" rounded-xl w-[200px]"
+                  style={{ height: "calc(150px * 1.5)" }}
+                />
+              </div>
               <div className="w-[50px] absolute z-50 bottom-[-15px] left-4">
-                <ProgressCircle percentage={Math.round(data?.vote_average * 10 || 10)} w="w-[35px]" bg="darkBlue"/>
+                <ProgressCircle
+                  percentage={Math.round(data?.vote_average * 10 || 10)}
+                  w="w-[35px]"
+                  bg="darkBlue"
+                />
               </div>
             </div>
 
